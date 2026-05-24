@@ -7,7 +7,7 @@
     "packages/dashboard/*"
   ],
   "scripts": {
-    "build": "npm run build -w @bot-trading/core && npm run build -w @bot-trading/bot-cesta-topk && npm run build -w @bot-trading/bot-liquidity-maker && npm run build -w @bot-trading/bot-endgame-carry && npm run build -w @bot-trading/bot-espejo-smart && npm run build -w @bot-trading/dashboard-api && npm run build -w @bot-trading/dashboard-ui",
+    "build": "node scripts/clean-tsbuildinfo.mjs && npm run build -w @bot-trading/core && npm run build -w @bot-trading/bot-cesta-topk && npm run build -w @bot-trading/bot-liquidity-maker && npm run build -w @bot-trading/bot-endgame-carry && npm run build -w @bot-trading/bot-espejo-smart && npm run build -w @bot-trading/dashboard-api && npm run build -w @bot-trading/dashboard-ui",
     "dev": "concurrently -n api,ui -c blue,magenta \"npm run dev -w @bot-trading/dashboard-api\" \"npm run dev -w @bot-trading/dashboard-ui\"",
     "dev:all": "concurrently -n api,ui,cesta,heartbeat -c blue,magenta,green,yellow \"npm run dev -w @bot-trading/dashboard-api\" \"npm run dev -w @bot-trading/dashboard-ui\" \"npm run dev -w @bot-trading/bot-cesta-topk\" \"npm run dev:heartbeat -w @bot-trading/core\"",
     "bot:cesta-topk": "npm run start -w @bot-trading/bot-cesta-topk",

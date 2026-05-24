@@ -36,8 +36,9 @@ export async function executeBasket(
     reservationId = reserveExposure('cesta-topk', opp.maxSizeUsd, opp.eventId);
   } catch (err) {
     if (err instanceof ExposureError) {
-      log.warn({ err: err.message }, 'Exposure limit — skip execution');
-      return { success: false, filledLegs: 0, error: err.message };
+      const message = err.message;
+      log.warn({ err: message }, 'Exposure limit — skip execution');
+      return { success: false, filledLegs: 0, error: message };
     }
     throw err;
   }
